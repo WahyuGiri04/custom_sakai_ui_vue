@@ -8,7 +8,7 @@ import AppTopbar from './AppTopbar.vue'
     <AppTopbar></AppTopbar>
     <div class="layout-main-container">
       <div class="layout-main">
-        <RouterView></RouterView>
+        <RouterView />
       </div>
     </div>
   </div>
