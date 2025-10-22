@@ -10,9 +10,15 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
+    HeroWidget: typeof import('./src/components/landing/HeroWidget.vue')['default']
+    Image: typeof import('primevue/image')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Password: typeof import('primevue/password')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TopbarWidget: typeof import('./src/components/landing/TopbarWidget.vue')['default']
+  }
+  export interface GlobalDirectives {
+    StyleClass: typeof import('primevue/styleclass')['default']
   }
 }

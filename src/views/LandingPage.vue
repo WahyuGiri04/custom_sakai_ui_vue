@@ -1,5 +1,17 @@
-<script lang="ts"></script>
+<script setup lang="ts">
+import HeroWidget from '@/components/landing/HeroWidget.vue'
+import TopbarWidget from '@/components/landing/TopbarWidget.vue'
+</script>
 
 <template>
-  <div class="text-black p-10 text-center w-full bg-red-600 rounded-full">Landing Page</div>
+  <div class="bg-surface-0">
+    <div id="home" class="landing-wrapper overflow-hidden">
+      <div
+        class="py-2 px-6 mx-0 md:mx-12 lg:mx-20 lg:px-20 flex items-center justify-between relative lg:static"
+      >
+        <TopbarWidget />
+      </div>
+      <HeroWidget />
+    </div>
+  </div>
 </template>
