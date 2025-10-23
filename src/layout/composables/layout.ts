@@ -41,7 +41,7 @@ const layoutState: LayoutState = reactive({
 
 // 3. Tambahkan Tipe Pengembalian dan Argumen pada Fungsi Composables
 export function useLayout() {
-    // Tipe untuk argumen 'item'
+    // Mengatur item menu aktif berdasarkan input yang diterima komponen.
     const setActiveMenuItem = (item: { value: string | null } | string | null) => {
         // Menggunakan tipe assertion 'as' atau cek tipe untuk mengakomodasi struktur item
         if (typeof item === 'object' && item !== null && 'value' in item) {
@@ -51,6 +51,7 @@ export function useLayout() {
         }
     };
 
+    // Mengubah tema gelap dengan efek transisi bila didukung browser.
     const toggleDarkMode = (): void => {
         if (!document.startViewTransition) {
             executeDarkModeToggle();
@@ -61,11 +62,13 @@ export function useLayout() {
         document.startViewTransition(() => executeDarkModeToggle());
     };
 
+    // Membalik nilai tema gelap dan menambahkan kelas tema pada elemen root.
     const executeDarkModeToggle = (): void => {
         layoutConfig.darkTheme = !layoutConfig.darkTheme;
         document.documentElement.classList.toggle('app-dark');
     };
 
+    // Menentukan perilaku pembukaan menu berdasarkan mode dan lebar layar.
     const toggleMenu = (): void => {
         if (layoutConfig.menuMode === 'overlay') {
             layoutState.overlayMenuActive = !layoutState.overlayMenuActive;
@@ -78,10 +81,13 @@ export function useLayout() {
         }
     };
 
-    // Tipe Pengembalian computed (Ref<boolean>, Ref<string | null>)
+    // Menyediakan status reaktif apakah sidebar sedang terlihat.
     const isSidebarActive: Ref<boolean> = computed(() => layoutState.overlayMenuActive || layoutState.staticMenuMobileActive);
+    // Menyediakan status reaktif tema gelap saat ini.
     const isDarkTheme: Ref<boolean> = computed(() => layoutConfig.darkTheme);
+    // Menyediakan warna primer yang digunakan tema.
     const getPrimary: Ref<string> = computed(() => layoutConfig.primary);
+    // Menyediakan warna permukaan yang berlaku pada tema.
     const getSurface: Ref<string | null> = computed(() => layoutConfig.surface);
 
     return {

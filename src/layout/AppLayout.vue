@@ -9,6 +9,7 @@ const { layoutConfig, layoutState, isSidebarActive } = useLayout()
 
 const outsideClickListener = ref<((event: MouseEvent) => void) | null>(null)
 
+// Mengawasi perubahan status sidebar untuk menyalakan atau mematikan listener klik global.
 watch(isSidebarActive, (newVal) => {
   if (newVal) {
     bindOutsideClickListener()
@@ -17,6 +18,7 @@ watch(isSidebarActive, (newVal) => {
   }
 })
 
+// Menghasilkan kelas CSS container berdasarkan konfigurasi dan status layout saat ini.
 const containerClass = computed(() => {
   return {
     'layout-overlay': layoutConfig.menuMode === 'overlay',
@@ -28,6 +30,7 @@ const containerClass = computed(() => {
   }
 })
 
+// Menambahkan listener klik pada dokumen untuk menutup menu ketika klik di luar.
 function bindOutsideClickListener() {
   if (!outsideClickListener.value) {
     outsideClickListener.value = (event) => {
@@ -41,6 +44,7 @@ function bindOutsideClickListener() {
   }
 }
 
+// Menghapus listener klik dokumen ketika sidebar sudah tertutup.
 function unbindOutsideClickListener() {
   if (outsideClickListener.value) {
     document.removeEventListener('click', outsideClickListener.value)
@@ -48,6 +52,7 @@ function unbindOutsideClickListener() {
   }
 }
 
+// Menentukan apakah target klik berada di luar sidebar dan tombol menu.
 function isOutsideClicked(event: MouseEvent) {
   const sidebarEl = document.querySelector('.layout-sidebar')
   const topbarEl = document.querySelector('.layout-menu-button')

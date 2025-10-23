@@ -52,5 +52,6 @@ const redPreset = {
 }
 
 export function applyRedPreset() {
+  // Menerapkan preset tema merah ke PrimeVue dengan opsi default.
   $t().preset(Aura).preset(redPreset).use({ useDefaultOptions: true })
 }

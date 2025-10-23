@@ -45,12 +45,14 @@ const props = defineProps({
 const isActiveMenu = ref(false)
 const itemKey = ref<string | null>(null)
 
+// Menyiapkan key menu dan menandai status aktif saat komponen akan dibuat.
 onBeforeMount(() => {
   itemKey.value = props.parentItemKey ? `${props.parentItemKey}-${props.index}` : String(props.index)
 
   updateActiveState(layoutState.activeMenuItem)
 })
 
+// Mengawasi perubahan item menu aktif global agar state lokal ikut terbarui.
 watch(
   () => layoutState.activeMenuItem,
   (newVal) => {
@@ -58,6 +60,7 @@ watch(
   },
 )
 
+// Menentukan apakah item menu ini harus berstatus aktif berdasarkan key yang tersimpan.
 function updateActiveState(activeItem: string | null) {
   if (!itemKey.value || !activeItem) {
     isActiveMenu.value = false
@@ -68,6 +71,7 @@ function updateActiveState(activeItem: string | null) {
     activeItem === itemKey.value || activeItem.startsWith(`${itemKey.value}-`)
 }
 
+// Menangani klik pada item menu termasuk pencegahan, perintah khusus, dan toggle menu.
 function itemClick(event: Event, item: MenuItem) {
   if (item.disabled) {
     event.preventDefault()
@@ -94,6 +98,7 @@ function itemClick(event: Event, item: MenuItem) {
   setActiveMenuItem(foundItemKey ?? null)
 }
 
+// Mengecek apakah rute saat ini sama dengan rute yang dimiliki item.
 function checkActiveRoute(item: MenuItem) {
   return !!item.to && route.path === item.to
 }

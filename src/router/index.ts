@@ -7,11 +7,13 @@ const router = createRouter({
     {
       path: '/landing',
       name: 'Landing Page',
+      // Memuat komponen halaman landing secara lazy saat rute diakses.
       component: () => import('@/views/pages/LandingPage.vue'),
     },
     {
       path: '/login',
       name: 'Login Page',
+      // Memuat komponen halaman login secara lazy saat rute diakses.
       component: () => import('@/views/pages/auth/LoginPage.vue'),
     },
     {
@@ -21,6 +23,7 @@ const router = createRouter({
         {
           path: '/',
           name: 'Dashboard',
+          // Memuat komponen dashboard utama secara lazy saat rute diakses.
           component: () => import('@/views/DashboardPage.vue'),
         },
       ],
