@@ -18,3 +18,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(100, 100, 100, 0.7);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.app-dark) .dark\:text-surface-0 {
+    color: var(--p-surface-900);
+  }
+}
+

@@ -26,6 +26,11 @@ const router = createRouter({
           // Memuat komponen dashboard utama secara lazy saat rute diakses.
           component: () => import('@/views/DashboardPage.vue'),
         },
+        {
+          path: '/parameter',
+          name: 'Paramater',
+          component: () => import('@/views/ParameterPage.vue')
+        }
       ],
     },
   ],

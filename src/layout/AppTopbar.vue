@@ -47,7 +47,7 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout()
     <div class="layout-topbar-actions">
       <div class="layout-config-menu">
         <button type="button" class="layout-topbar-action" @click="toggleDarkMode">
-          <i :class="['pi pi-spin', { 'pi-moon': isDarkTheme, 'pi-sun': !isDarkTheme }]"></i>
+          <i :class="['pi', { 'pi-moon': isDarkTheme, 'pi-sun': !isDarkTheme }]"></i>
         </button>
       </div>
       <button
