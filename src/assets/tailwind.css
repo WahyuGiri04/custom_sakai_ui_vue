@@ -1,2 +1,20 @@
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
+
+::-webkit-scrollbar {
+  width: 2px; /* Lebar scrollbar vertikal */
+  height: 2px; /* Tinggi scrollbar horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Latar belakang track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4); /* Warna handle */
+  border-radius: 9999px; /* Membulatkan handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.7);
+}
