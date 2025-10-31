@@ -65,7 +65,8 @@ export function useLayout() {
     // Membalik nilai tema gelap dan menambahkan kelas tema pada elemen root.
     const executeDarkModeToggle = (): void => {
         layoutConfig.darkTheme = !layoutConfig.darkTheme;
-        document.documentElement.classList.toggle('app-dark');
+        document.documentElement.classList.toggle('app-dark', layoutConfig.darkTheme);
+        document.documentElement.classList.toggle('dark', layoutConfig.darkTheme);
     };
 
     // Menentukan perilaku pembukaan menu berdasarkan mode dan lebar layar.

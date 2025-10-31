@@ -9,11 +9,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
-    Card: typeof import('primevue/card')['default']
     Carousel: typeof import('primevue/carousel')['default']
-    Galleria: typeof import('primevue/galleria')['default']
     HeroWidget: typeof import('./src/components/landing/HeroWidget.vue')['default']
-    Image: typeof import('primevue/image')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Tag: typeof import('primevue/tag')['default']
