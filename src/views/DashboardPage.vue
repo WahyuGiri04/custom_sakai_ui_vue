@@ -1,66 +1,97 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup>
+import { ProductService } from '@/service/ProductService'
+import { useNProgress } from '@/composables/useNProgress'
+import { onMounted, ref } from 'vue'
+
+type ProductList = Awaited<ReturnType<typeof ProductService.getProductsSmall>>
+type ProductItem = ProductList extends Array<infer Item> ? Item : never
+
+const products = ref<ProductItem[]>([])
+
+const carouselResponsiveOptions = [
+  {
+    breakpoint: '1024px',
+    numVisible: 3,
+    numScroll: 3,
+  },
+  {
+    breakpoint: '768px',
+    numVisible: 3,
+    numScroll: 3,
+  },
+  {
+    breakpoint: '560px',
+    numVisible: 3,
+    numScroll: 3,
+  },
+]
+
+const { wrap } = useNProgress()
+
+const loadProducts = async () => {
+  const data = await ProductService.getProductsSmall()
+  products.value = data
+}
+
+onMounted(() => {
+  wrap(loadProducts)
+})
+
+const getSeverity = (
+  status: ProductItem['inventoryStatus'],
+): 'success' | 'danger' | 'warn' | 'secondary' | 'info' | 'contrast' | undefined => {
+  switch (status) {
+    case 'INSTOCK':
+      return 'success'
+
+    case 'LOWSTOCK':
+      return 'warn'
+
+    case 'OUTOFSTOCK':
+      return 'danger'
+
+    default:
+      return undefined
+  }
+}
+</script>
 
 <template>
-  <div class="grid grid-cols-12 gap-8">
-    <div class="col-span-12 lg:col-span-6 xl:col-span-3">
-        <div class="card mb-0">
-            <div class="flex justify-between mb-4">
-                <div>
-                    <span class="block text-muted-color font-medium mb-4">Orders</span>
-                    <div class="text-surface-900 dark:text-surface-0 font-medium text-xl">152</div>
-                </div>
-                <div class="flex items-center justify-center bg-blue-100 dark:bg-blue-400/10 rounded-border" style="width: 2.5rem; height: 2.5rem">
-                    <i class="pi pi-shopping-cart text-blue-500 !text-xl"></i>
-                </div>
+  <div class="card">
+    <div class="font-semibold text-xl mb-4">Carousel</div>
+    <Carousel
+      :value="products"
+      :numVisible="3"
+      :numScroll="3"
+      :responsiveOptions="carouselResponsiveOptions"
+    >
+      <template #item="slotProps">
+        <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
+          <div class="mb-4">
+            <div class="relative mx-auto">
+              <img
+                :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image"
+                :alt="slotProps.data.name"
+                class="w-full rounded"
+              />
+              <div class="dark:bg-surface-900 absolute rounded-border" style="left: 5px; top: 5px">
+                <Tag
+                  :value="slotProps.data.inventoryStatus"
+                  :severity="getSeverity(slotProps.data.inventoryStatus)"
+                />
+              </div>
             </div>
-            <span class="text-primary font-medium">24 new </span>
-            <span class="text-muted-color">since last visit</span>
+          </div>
+          <div class="mb-4 font-medium">{{ slotProps.data.name }}</div>
+          <div class="flex justify-between items-center">
+            <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
+            <span>
+              <Button icon="pi pi-heart" severity="secondary" outlined />
+              <Button icon="pi pi-shopping-cart" class="ml-2" />
+            </span>
+          </div>
         </div>
-    </div>
-    <div class="col-span-12 lg:col-span-6 xl:col-span-3">
-        <div class="card mb-0">
-            <div class="flex justify-between mb-4">
-                <div>
-                    <span class="block text-muted-color font-medium mb-4">Revenue</span>
-                    <div class="text-surface-900 dark:text-surface-0 font-medium text-xl">$2.100</div>
-                </div>
-                <div class="flex items-center justify-center bg-orange-100 dark:bg-orange-400/10 rounded-border" style="width: 2.5rem; height: 2.5rem">
-                    <i class="pi pi-dollar text-orange-500 !text-xl"></i>
-                </div>
-            </div>
-            <span class="text-primary font-medium">%52+ </span>
-            <span class="text-muted-color">since last week</span>
-        </div>
-    </div>
-    <div class="col-span-12 lg:col-span-6 xl:col-span-3">
-        <div class="card mb-0">
-            <div class="flex justify-between mb-4">
-                <div>
-                    <span class="block text-muted-color font-medium mb-4">Customers</span>
-                    <div class="text-surface-900 dark:text-surface-0 font-medium text-xl">28441</div>
-                </div>
-                <div class="flex items-center justify-center bg-cyan-100 dark:bg-cyan-400/10 rounded-border" style="width: 2.5rem; height: 2.5rem">
-                    <i class="pi pi-users text-cyan-500 !text-xl"></i>
-                </div>
-            </div>
-            <span class="text-primary font-medium">520 </span>
-            <span class="text-muted-color">newly registered</span>
-        </div>
-    </div>
-    <div class="col-span-12 lg:col-span-6 xl:col-span-3">
-        <div class="card mb-0">
-            <div class="flex justify-between mb-4">
-                <div>
-                    <span class="block text-muted-color font-medium mb-4">Comments</span>
-                    <div class="text-surface-900 dark:text-surface-0 font-medium text-xl">152 Unread</div>
-                </div>
-                <div class="flex items-center justify-center bg-purple-100 dark:bg-purple-400/10 rounded-border" style="width: 2.5rem; height: 2.5rem">
-                    <i class="pi pi-comment text-purple-500 !text-xl"></i>
-                </div>
-            </div>
-            <span class="text-primary font-medium">85 </span>
-            <span class="text-muted-color">responded</span>
-        </div>
-    </div>
+      </template>
+    </Carousel>
   </div>
 </template>
