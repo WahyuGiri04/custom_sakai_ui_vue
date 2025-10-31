@@ -1,4 +1,5 @@
 import AppLayout from '@/layout/AppLayout.vue'
+import NProgress from 'nprogress'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -34,6 +35,29 @@ const router = createRouter({
       ],
     },
   ],
+})
+
+// Nonaktifkan spinner default dan hanya tampilkan bar progress.
+NProgress.configure({
+  showSpinner: false,
+})
+
+router.beforeEach((to, from, next) => {
+  // Mulai progress bar setiap kali proses navigasi dimulai.
+  if (!NProgress.isStarted()) {
+    NProgress.start()
+  }
+  next()
+})
+
+// Selesaikan progress bar setelah navigasi berhasil.
+router.afterEach(() => {
+  NProgress.done()
+})
+
+// Pastikan progress dihentikan jika navigasi gagal.
+router.onError(() => {
+  NProgress.done()
 })
 
 export default router

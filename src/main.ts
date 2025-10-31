@@ -6,6 +6,7 @@ import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
 import '@/assets/tailwind.css'
 import '@/assets/styles.scss'
+import '@/assets/nprogress.scss'
 import { applyRedPreset } from './theme/theme'
 
 const app = createApp(App)
