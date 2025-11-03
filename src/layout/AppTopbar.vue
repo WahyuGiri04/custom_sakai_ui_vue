@@ -13,7 +13,7 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout()
       <router-link to="/" class="layout-topbar-logo">
         <img src="/public/jalin.svg" width="50px" />
         <div class="h-8 w-px bg-gray-300"></div>
-        <span class="font-bold">ATM MP</span>
+        <span class="font-bold">ATM - MP</span>
       </router-link>
     </div>
 

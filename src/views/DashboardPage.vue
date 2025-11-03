@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ProductService } from '@/service/ProductService'
-import { useNProgress } from '@/composables/useNProgress'
+import { useNProgress } from '@/layout/composables/useNProgress'
 import { onMounted, ref } from 'vue'
 
 type ProductList = Awaited<ReturnType<typeof ProductService.getProductsSmall>>

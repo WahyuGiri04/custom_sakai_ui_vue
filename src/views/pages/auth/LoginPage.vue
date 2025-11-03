@@ -43,14 +43,20 @@ const onFormSubmit = ({ valid }: { valid: boolean }) => {
           initialValue=""
           class="flex flex-col gap-2 w-full"
         >
-          <InputText type="text" placeholder="Username" />
+          <IconField>
+            <InputIcon class="pi pi-user" />
+            <InputText type="text" class="w-full" placeholder="Username" />
+          </IconField>
           <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{
             $field.error?.message
           }}</Message>
         </FormField>
         <FormField v-slot="$field" asChild name="password" initialValue="">
           <section class="flex flex-col gap-2">
-            <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
+            <IconField>
+              <InputIcon class="pi pi-key" />
+              <Password type="text" placeholder="Password" :feedback="false" toggleMask fluid />
+            </IconField>
             <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{
               $field.error?.message
             }}</Message>

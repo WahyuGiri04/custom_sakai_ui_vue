@@ -12,6 +12,8 @@ declare module 'vue' {
     Carousel: typeof import('primevue/carousel')['default']
     FormField: typeof import('@primevue/forms/formfield')['default']
     HeroWidget: typeof import('./src/components/landing/HeroWidget.vue')['default']
+    IconField: typeof import('primevue/iconfield')['default']
+    InputIcon: typeof import('primevue/inputicon')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
     Password: typeof import('primevue/password')['default']
