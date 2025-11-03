@@ -8,9 +8,11 @@ import '@/assets/tailwind.css'
 import '@/assets/styles.scss'
 import '@/assets/nprogress.scss'
 import { applyRedPreset } from './theme/theme'
+import ToastService from 'primevue/toastservice'
 
 const app = createApp(App)
 
+app.use(ToastService)
 app.use(createPinia())
 app.use(router)
 app.use(PrimeVue, {

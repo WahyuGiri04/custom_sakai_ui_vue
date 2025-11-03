@@ -76,7 +76,8 @@ function isOutsideClicked(event: MouseEvent) {
     <AppTopbar></AppTopbar>
     <AppSidebar></AppSidebar>
     <div class="layout-main-container">
-      <div class="layout-main">
+      <!-- <div class="layout-main"> -->
+      <div class="pb-8">
         <RouterView />
       </div>
     </div>
