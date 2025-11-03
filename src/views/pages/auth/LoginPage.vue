@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { zodResolver } from '@primevue/forms/resolvers/zod'
 import { z } from 'zod'
+import { Form } from '@primevue/forms'
 import { useToast } from 'primevue/usetoast'
-import { Form } from '@primevue/forms';
+import { useRouter } from 'vue-router'
 
 const toast = useToast()
+const router = useRouter()
 
 const resolver = zodResolver(
   z.object({
@@ -15,7 +17,8 @@ const resolver = zodResolver(
 
 const onFormSubmit = ({ valid }: { valid: boolean }) => {
   if (valid) {
-    toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 })
+    toast.add({ severity: 'success', summary: 'Login Successfuly', life: 5000 })
+    router.push({ name: 'Dashboard' })
   }
 }
 </script>
