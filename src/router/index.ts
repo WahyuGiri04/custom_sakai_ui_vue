@@ -28,9 +28,9 @@ const router = createRouter({
           component: () => import('@/views/DashboardPage.vue'),
         },
         {
-          path: '/parameter',
+          path: '/list-transaction',
           name: 'Paramater',
-          component: () => import('@/views/ParameterPage.vue')
+          component: () => import('@/views/ListTransactionPage.vue')
         }
       ],
     },

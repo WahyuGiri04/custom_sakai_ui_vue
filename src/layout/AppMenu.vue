@@ -32,7 +32,7 @@ const model = ref<AppMenuOption[]>([
           {
             label: 'List of Transaction',
             icon: 'pi pi-fw pi-list',
-            to: '/parameter',
+            to: '/list-transaction',
           },
           {
             label: 'List of Transfer Suspect',
