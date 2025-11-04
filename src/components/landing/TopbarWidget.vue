@@ -13,7 +13,7 @@ function smoothScroll(id: string) {
 
 <template>
   <a class="flex items-center" href="#">
-    <img src="/public/jalin.png" alt="logo" width="100px" class="p-2 mr-2" />
+    <img src="/jalin.png" alt="logo" width="100px" class="p-2 mr-2" />
     <span class="text-surface-900 font-medium text-xl leading-normal mr-20"
       >Jalin Pembayaran Nusantara
     </span>
