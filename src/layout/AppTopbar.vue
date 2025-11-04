@@ -41,15 +41,24 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout()
         <div class="layout-topbar-menu-content">
           <button type="button" class="layout-topbar-action">
             <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
+            <span class="layout-topbar-action-label">Calendar</span>
           </button>
           <button type="button" class="layout-topbar-action">
-            <i class="pi pi-inbox"></i>
-            <span>Messages</span>
+            <span
+              class="relative mr-2 flex h-full w-full items-center justify-center lg:mr-0"
+            >
+              <i class="pi pi-inbox"></i>
+              <span
+                class="absolute -top-0.5 -right-0.5 flex h-5 min-w-[1.25rem] translate-x-[15%] -translate-y-[15%] items-center justify-center rounded-full border-2 border-[var(--surface-card)] bg-red-500 px-1 text-xs font-semibold leading-none text-white shadow pointer-events-none"
+              >
+                1
+              </span>
+            </span>
+            <span class="layout-topbar-action-label">Messages</span>
           </button>
           <button type="button" class="layout-topbar-action">
             <i class="pi pi-user"></i>
-            <span>Profile</span>
+            <span class="layout-topbar-action-label">Profile</span>
           </button>
         </div>
       </div>

@@ -19,6 +19,22 @@
   background-color: rgba(100, 100, 100, 0.7);
 }
 
+@layer utilities {
+  .text-surface-100 {
+    color: var(--p-surface-100);
+  }
+/* 
+  .dark\:text-surface-100 {
+    @apply text-surface-100;
+  } */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.app-dark) .dark\:text-surface-100 {
+    color: var(--p-surface-800);
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not(.app-dark) .dark\:text-surface-0 {
     color: var(--p-surface-900);

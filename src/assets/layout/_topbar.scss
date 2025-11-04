@@ -60,7 +60,7 @@
             font-size: 1.25rem;
         }
 
-        span {
+        .layout-topbar-action-label {
             font-size: 1rem;
             display: none;
         }
@@ -142,10 +142,9 @@
 
                 i {
                     font-size: 1rem;
-                    margin-right: 0.5rem;
                 }
 
-                span {
+                .layout-topbar-action-label {
                     font-weight: medium;
                     display: block;
                 }

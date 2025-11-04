@@ -17,7 +17,7 @@ const resolver = zodResolver(
 
 const onFormSubmit = ({ valid }: { valid: boolean }) => {
   if (valid) {
-    toast.add({ severity: 'success', summary: 'Login Successfuly', life: 5000 })
+    toast.add({ severity: 'success', summary: 'Login Successfuly', life: 3000 })
     router.push({ name: 'Dashboard' })
   }
 }

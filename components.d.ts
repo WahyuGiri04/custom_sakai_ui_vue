@@ -8,8 +8,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Button: typeof import('primevue/button')['default']
+    Card: typeof import('primevue/card')['default']
     Carousel: typeof import('primevue/carousel')['default']
+    DatePicker: typeof import('primevue/datepicker')['default']
     HeroWidget: typeof import('./src/components/landing/HeroWidget.vue')['default']
+    Menu: typeof import('primevue/menu')['default']
+    OverlayBadge: typeof import('primevue/overlaybadge')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Toast: typeof import('primevue/toast')['default']

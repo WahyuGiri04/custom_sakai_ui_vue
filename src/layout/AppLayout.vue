@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import { useLayout } from './composables/layout'
 import AppTopbar from './AppTopbar.vue'
 import AppSidebar from './AppSidebar.vue'
+import AppFooter from './AppFooter.vue'
 
 const { layoutConfig, layoutState, isSidebarActive } = useLayout()
 
@@ -82,5 +83,6 @@ function isOutsideClicked(event: MouseEvent) {
       </div>
     </div>
     <div class="layout-mask animate-fadein"></div>
+    <AppFooter></AppFooter>
   </div>
 </template>
