@@ -8,6 +8,7 @@ const { items, loading, error, hasData } = storeToRefs(transactionStore)
 const skeletonRows = Array.from({ length: 10 }, (_, index) => ({ id: index }))
 
 onMounted(() => {
+  transactionStore.fetchTransactions()
   if (!hasData.value) {
     transactionStore.fetchTransactions()
   }
