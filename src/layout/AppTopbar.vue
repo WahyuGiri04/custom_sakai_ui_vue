@@ -50,9 +50,7 @@ const positionPopover = () => {
   const popoverEl = messagePopoverRef.value
   const actionsEl = topbarActionsRef.value
   const anchorEl =
-    popoverAnchor.value === 'desktop'
-      ? desktopMessageButtonRef.value
-      : mobileMessageButtonRef.value
+    popoverAnchor.value === 'desktop' ? desktopMessageButtonRef.value : mobileMessageButtonRef.value
 
   if (!popoverEl || !actionsEl) {
     return
@@ -72,10 +70,7 @@ const positionPopover = () => {
     const popoverRect = popoverEl.getBoundingClientRect()
     const gap = 12
     const rawLeft =
-      anchorRect.left +
-      anchorRect.width / 2 -
-      containerRect.left -
-      popoverRect.width / 2
+      anchorRect.left + anchorRect.width / 2 - containerRect.left - popoverRect.width / 2
     const maxLeft = Math.max(containerRect.width - popoverRect.width, 0)
     const left = Math.min(Math.max(rawLeft, 0), maxLeft)
     const top = anchorRect.bottom - containerRect.top + gap
@@ -93,25 +88,8 @@ const positionPopover = () => {
   }
 }
 
-const toggleMessages = (anchor: 'desktop' | 'mobile') => {
-  if (isMessagesOpen.value && popoverAnchor.value === anchor) {
-    isMessagesOpen.value = false
-    return
-  }
-
-  popoverAnchor.value = anchor
-  isMessagesOpen.value = true
-  nextTick(() => positionPopover())
-}
-
 const closeMessages = () => {
   isMessagesOpen.value = false
-}
-
-const markAsRead = (message: MessageItem) => {
-  if (!message.read) {
-    message.read = true
-  }
 }
 
 const handleClickOutside = (event: MouseEvent) => {
@@ -140,6 +118,22 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
   window.removeEventListener('resize', handleResize)
 })
+
+const op = ref()
+const members = ref([
+  { name: 'Amy Elsner', image: 'amyelsner.png', email: 'amy@email.com', role: 'Owner' },
+  {
+    name: 'Bernardo Dominic',
+    image: 'bernardodominic.png',
+    email: 'bernardo@email.com',
+    role: 'Editor',
+  },
+  { name: 'Ioni Bowcher', image: 'ionibowcher.png', email: 'ioni@email.com', role: 'Viewer' },
+])
+
+const toggle = (event: MouseEvent) => {
+  op.value?.toggle(event)
+}
 </script>
 
 <template>
@@ -166,7 +160,7 @@ onBeforeUnmount(() => {
         ref="mobileMessageButtonRef"
         type="button"
         class="layout-topbar-action layout-topbar-profile layout-topbar-inbox lg:hidden"
-        @click.stop="toggleMessages('mobile')"
+        @click="toggle"
         :aria-expanded="isMessagesOpen"
         aria-controls="layout-topbar-messages"
       >
@@ -196,60 +190,60 @@ onBeforeUnmount(() => {
         <div class="layout-topbar-menu-content">
           <button type="button" class="layout-topbar-action layout-topbar-profile">
             <span class="layout-topbar-profile-avatar">
-              <img src="/jalin.png" alt="Maila Alvianti" />
+              <img src="/sample-avatar.jpg" alt="Maila Alvianti" />
             </span>
             <span class="layout-topbar-action-label">Maila Alvianti</span>
-            <i class="pi pi-chevron-down layout-topbar-profile-caret"></i>
           </button>
         </div>
       </div>
 
-      <transition name="layout-topbar-popover">
-        <div
-          v-if="isMessagesOpen"
-          id="layout-topbar-messages"
-          ref="messagePopoverRef"
-          class="layout-topbar-popover"
-          :style="popoverStyles"
-          role="dialog"
-          aria-label="Message notifications"
-        >
-          <header class="layout-topbar-popover-header">
-            <span class="layout-topbar-popover-title">Messages</span>
-            <button type="button" class="layout-topbar-popover-close" @click="closeMessages">
-              <i class="pi pi-times"></i>
-            </button>
-          </header>
-          <ul class="layout-topbar-popover-list">
-            <li v-if="!messages.length" class="layout-topbar-popover-empty">
-              Tidak ada pesan baru
-            </li>
-            <li
-              v-for="message in messages"
-              :key="message.id"
-              :class="['layout-topbar-popover-item', { 'is-unread': !message.read }]"
-            >
-              <button
-                type="button"
-                class="layout-topbar-popover-item-button"
-                @click="markAsRead(message)"
-              >
-                <span class="layout-topbar-popover-item-icon">
-                  <i :class="['pi', message.read ? 'pi-envelope-open' : 'pi-envelope']"></i>
-                </span>
-                <span class="layout-topbar-popover-item-content">
-                  <span class="layout-topbar-popover-item-sender">{{ message.sender }}</span>
-                  <span class="layout-topbar-popover-item-subject">{{ message.subject }}</span>
-                  <span class="layout-topbar-popover-item-time">{{ message.time }}</span>
-                </span>
-              </button>
-            </li>
-          </ul>
-          <footer class="layout-topbar-popover-footer">
-            <button type="button" class="layout-topbar-popover-view-all">View all messages</button>
-          </footer>
+      <Popover ref="op">
+        <div class="flex flex-col gap-4 w-[25rem]">
+          <div>
+            <span class="font-medium block mb-2">Share this document</span>
+            <InputGroup>
+              <InputText
+                value="https://primevue.org/12323ff26t2g243g423g234gg52hy25XADXAG3"
+                readonly
+                class="w-[25rem]"
+              ></InputText>
+              <InputGroupAddon>
+                <i class="pi pi-copy"></i>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+          <div>
+            <span class="font-medium block mb-2">Invite Member</span>
+            <InputGroup>
+              <InputText disabled />
+              <Button label="Invite" icon="pi pi-users"></Button>
+            </InputGroup>
+          </div>
+          <div>
+            <span class="font-medium block mb-2">Team Members</span>
+            <ul class="list-none p-0 m-0 flex flex-col gap-4">
+              <li v-for="member in members" :key="member.name" class="flex items-center gap-2">
+                <img
+                  :src="`https://primefaces.org/cdn/primevue/images/avatar/${member.image}`"
+                  style="width: 32px"
+                />
+                <div>
+                  <span class="font-medium">{{ member.name }}</span>
+                  <div class="text-sm text-surface-500 dark:text-surface-400">
+                    {{ member.email }}
+                  </div>
+                </div>
+                <div
+                  class="flex items-center gap-2 text-surface-500 dark:text-surface-400 ml-auto text-sm"
+                >
+                  <span>{{ member.role }}</span>
+                  <i class="pi pi-angle-down"></i>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-      </transition>
+      </Popover>
     </div>
   </div>
 </template>

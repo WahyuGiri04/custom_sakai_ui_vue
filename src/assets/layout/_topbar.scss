@@ -141,6 +141,23 @@
         }
     }
 
+    .layout-topbar-share {
+        .layout-topbar-share-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-600, #3b82f6));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-contrast-color, #fff);
+
+            i {
+                font-size: 1rem;
+            }
+        }
+    }
+
     .layout-menu-button {
         margin-right: 0.5rem;
     }
