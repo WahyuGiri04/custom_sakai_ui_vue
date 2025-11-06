@@ -29,8 +29,13 @@ const router = createRouter({
         },
         {
           path: '/list-transaction',
-          name: 'Paramater',
+          name: 'List Transaction',
           component: () => import('@/views/ListTransactionPage.vue')
+        },
+        {
+          path: '/list-transfer',
+          name: 'List Transfer',
+          component: () => import('@/views/ListTransferPage.vue')
         }
       ],
     },

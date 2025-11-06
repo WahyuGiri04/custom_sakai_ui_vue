@@ -147,7 +147,7 @@ onBeforeUnmount(() => {
                   <Button
                     label="See Report"
                     icon="pi pi-file"
-                    class="w-full !bg-red-600 hover:!bg-red-700 !border-red-600"
+                    class="w-full !bg-red-600 hover:!bg-red-700 !border-red-600 dark:!text-surface-100"
                     severity="danger"
                   />
                   <p class="text-gray-500 text-xs text-center m-0">Update: 04:22 AM</p>
@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
             <Card style="overflow: hidden" class="!bg-red-50 !border-red-200 border-2 col-span-2">
               <template #content>
                 <div class="flex items-center justify-between mb-1">
-                  <h1 class="text-4xl font-bold text-red-600">7</h1>
+                  <h1 class="text-4xl font-bold !text-red-600">7</h1>
                   <i class="pi pi-chevron-right text-red-400 text-xl"></i>
                 </div>
                 <p class="text-gray-700 text-sm mb-3">Closed Today</p>
@@ -174,7 +174,7 @@ onBeforeUnmount(() => {
             >
               <template #content>
                 <div class="flex items-center justify-between mb-1">
-                  <h1 class="text-4xl font-bold text-yellow-600">15</h1>
+                  <h1 class="text-4xl font-bold !text-yellow-600">15</h1>
                   <i class="pi pi-chevron-right text-yellow-400 text-xl"></i>
                 </div>
                 <p class="text-gray-700 text-sm mb-3">Closed on 20 - 25 Mei</p>
@@ -281,7 +281,7 @@ onBeforeUnmount(() => {
                   <Button
                     label="See Report"
                     icon="pi pi-file"
-                    class="w-full !bg-red-600 hover:!bg-red-700 !border-red-600"
+                    class="w-full !bg-red-600 hover:!bg-red-700 !border-red-600 !text-surface-100"
                     severity="danger"
                   />
                   <p class="text-gray-500 text-xs text-center m-0">Update: 04:22 AM</p>
@@ -291,7 +291,7 @@ onBeforeUnmount(() => {
             <Card style="overflow: hidden" class="!bg-red-50 !border-red-200 border-2">
               <template #content>
                 <div class="flex items-center justify-between mb-1">
-                  <h1 class="text-4xl font-bold text-red-600">17</h1>
+                  <h1 class="text-4xl font-bold !text-red-600">17</h1>
                   <i class="pi pi-chevron-right text-red-400 text-xl"></i>
                 </div>
                 <p class="text-gray-700 text-sm mb-3">Expaired Today</p>
@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
             <Card style="overflow: hidden" class="!bg-red-50 !border-red-200 border-2 col-span-2">
               <template #content>
                 <div class="flex items-center justify-between mb-1">
-                  <h1 class="text-4xl font-bold text-red-600">44</h1>
+                  <h1 class="text-4xl font-bold !text-red-600">44</h1>
                   <i class="pi pi-chevron-right text-red-400 text-xl"></i>
                 </div>
                 <p class="text-gray-700 text-sm mb-3">Already Expaired</p>
@@ -319,7 +319,7 @@ onBeforeUnmount(() => {
             <Card style="overflow: hidden" class="!bg-yellow-50 !border-yellow-200 border-2">
               <template #content>
                 <div class="flex items-center justify-between mb-1">
-                  <h1 class="text-4xl font-bold text-yellow-600">15</h1>
+                  <h1 class="text-4xl font-bold !text-yellow-600">15</h1>
                   <i class="pi pi-chevron-right text-yellow-400 text-xl"></i>
                 </div>
                 <p class="text-gray-700 text-sm mb-3">Expaired on 20 - 25 Mei</p>

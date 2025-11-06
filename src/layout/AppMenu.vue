@@ -37,7 +37,7 @@ const model = ref<AppMenuOption[]>([
           {
             label: 'List of Transfer Suspect',
             icon: 'pi pi-fw pi-list-check',
-            to: '/auth/error',
+            to: '/list-transfer',
           }
         ],
       },
