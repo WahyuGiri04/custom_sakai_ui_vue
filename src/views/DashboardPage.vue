@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ProductService } from '@/service/ProductService'
-import { useNProgress } from '@/layout/composables/useNProgress'
+import { useNProgress } from '@/composables/useNProgress'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { MenuMethods } from 'primevue/menu'
 

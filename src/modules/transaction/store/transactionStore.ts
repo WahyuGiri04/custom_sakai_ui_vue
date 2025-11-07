@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { TransactionService, type Transaction } from '@/service/TransactionService'
+import { TransactionService, type Transaction } from '@/modules/transaction/services/transactionService'
 
 interface TransactionState {
   items: Transaction[]

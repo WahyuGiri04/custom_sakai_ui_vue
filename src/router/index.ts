@@ -1,4 +1,5 @@
-import AppLayout from '@/layout/AppLayout.vue'
+import AppLayout from '@/components/layout/AppLayout.vue'
+import { transactionRoutes } from '@/modules/transaction'
 import NProgress from 'nprogress'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -27,16 +28,7 @@ const router = createRouter({
           // Memuat komponen dashboard utama secara lazy saat rute diakses.
           component: () => import('@/views/DashboardPage.vue'),
         },
-        {
-          path: '/list-transaction',
-          name: 'List Transaction',
-          component: () => import('@/views/ListTransactionPage.vue')
-        },
-        {
-          path: '/list-transfer',
-          name: 'List Transfer',
-          component: () => import('@/views/ListTransferPage.vue')
-        }
+        ...transactionRoutes,
       ],
     },
   ],

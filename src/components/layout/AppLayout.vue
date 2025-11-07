@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import { computed, ref, watch } from 'vue'
-import { useLayout } from './composables/layout'
+import { useLayout } from '@/composables/useLayout'
 import AppTopbar from './AppTopbar.vue'
 import AppSidebar from './AppSidebar.vue'
 import AppFooter from './AppFooter.vue'

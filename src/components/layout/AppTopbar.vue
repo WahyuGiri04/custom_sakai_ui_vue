@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
-import { useLayout } from './composables/layout'
+import { useLayout } from '@/composables/useLayout'
 
 const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout()
 
